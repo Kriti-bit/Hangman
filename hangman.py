@@ -17,16 +17,29 @@ def hangman():
     alphabet = set(string.ascii_uppercase)
     used_letters = set()  # letters the user has already guessed
 
-    # Getting user input
-    user_letter = input('Guess a letter: ').upper()
+    while len(word_letters) > 0:
 
-    if user_letter in alphabet-used_letters:
-        used_letters.add(user_letter)
-        if user_letter in word_letters:
-            word_letters.remove(user_letter)
+        # letters used
+        # ' '.join(['a', 'b', 'cd']) --> 'a b cd'
+        print('You have used these letters: ', ' '.join(used_letters))
 
-    elif user_letter in used_letters:
-        print('You have already used that character. Please try again')
+        # what current word is (i.e. W - R D)
+        word_list = [letter if letter in used_letters else '-' for letter in word]
+        print('Current Word: ',' '.join(word_list))
 
-    else:
-        print('Invalid character. Please try again')
+        # Getting user input
+        user_letter = input('Guess a letter: ').upper()
+
+        if user_letter in alphabet-used_letters:
+            used_letters.add(user_letter)
+            if user_letter in word_letters:
+                word_letters.remove(user_letter)
+
+        elif user_letter in used_letters:
+            print('You have already used that character. Please try again')
+
+        else:
+            print('Invalid character. Please try again')
+
+if __name__ == '__main__':
+    hangman()
