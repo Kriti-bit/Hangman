@@ -17,7 +17,7 @@ def hangman():
     word_letters = set(word)  # letters in the word to be guessed
     alphabet = set(string.ascii_uppercase)
     used_letters = set()  # letters the user has already guessed
-    lives = 7 #TODO: Cross check value
+    lives = 7
 
     while len(word_letters) > 0 and lives > 0:
 
